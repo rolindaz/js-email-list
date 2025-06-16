@@ -18,14 +18,18 @@ const ulEl = document.getElementById('mail-list');
 fetch(endpoint)
 .then(response => response.json())
 .then(data => {
-    
     //Stampa il risultato della singola mail in console per confermare che la chiamata sia andata a buon fine e siano presenti i risultati
-    
     console.log(data);
-    
-    // Adesso PENSA: devo fare la stessa cosa per 10 volte: che strumento mi permette di ripetere qualcosa usando un contatore?
-    
-    for (let i = 10; i > 0; i--) {
+});
+
+// Adesso PENSA: devo fare la stessa cosa per 10 volte: che strumento mi permette di ripetere qualcosa usando un contatore?
+
+for (let i = 10; i > 0; i--) {
+    fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+        
+        //Stampa il risultato della singola mail in console per confermare che la chiamata sia andata a buon fine e siano presenti i risultati
         console.log(data);
         
         // Aggiorna la DOM inserendo gli indirizzi generati in una lista
@@ -35,5 +39,5 @@ fetch(endpoint)
             </li>
         `;
         ulEl.insertAdjacentHTML('beforeend', emailMarkup);
-    };
-});
+    });
+};
